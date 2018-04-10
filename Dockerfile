@@ -22,4 +22,4 @@ EXPOSE 5005
 
 ENTRYPOINT ["sbt"]
 
-CMD ["-jvm-debug", "5005", "run"]
+CMD ["~jetty:start"]

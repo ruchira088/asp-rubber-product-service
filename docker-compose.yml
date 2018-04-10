@@ -8,6 +8,7 @@ services:
       - postgres-database
     ports:
       - 5005:5005
+      - 8080:8080
     volumes:
       - "~/.sbt:/root/.sbt"
       - "~/.ivy2:/root/.ivy2"
