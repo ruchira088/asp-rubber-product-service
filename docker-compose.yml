@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+
+  asp-rubber-product-service:
+    build: .
+    depends_on:
+      - postgres-database
+    ports:
+      - 5005:5005
+    volumes:
+      - "~/.sbt:/root/.sbt"
+      - "~/.ivy2:/root/.ivy2"
+      - ".:/opt/asp-rubber-product-service"
+      - "/opt/asp-rubber-product-service/target"
+      - "/opt/asp-rubber-product-service/project/target"
+    environment:
+      DB_HOSTNAME: "postgres-database"
+      DB_PORT: "5432"
+      DB_NAME: "asp-rubber"
+      DB_USERNAME: "asp-rubber"
+      DB_PASSWORD: "postgres-password"
+
+  postgres-database:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "asp-rubber"
+      POSTGRES_PASSWORD: "postgres-password"
+      POSTGRES_DB: "asp-rubber"
