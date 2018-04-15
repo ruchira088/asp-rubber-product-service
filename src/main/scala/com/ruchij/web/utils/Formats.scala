@@ -8,7 +8,7 @@ import scala.util.Try
 
 object Formats
 {
-  implicit def defaultFormats: Formats = DefaultFormats + JodaTimeSerializer
+  implicit def formats: Formats = DefaultFormats + JodaTimeSerializer
 
   private object JodaDateTime
   {
