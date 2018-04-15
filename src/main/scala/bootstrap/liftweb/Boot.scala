@@ -1,9 +1,10 @@
 package bootstrap.liftweb
 
 import com.ruchij.EnvironmentVariables
+import com.ruchij.daos.product.lift.{ProductMapper, TagMapper}
 import com.ruchij.daos.{DatabaseConnectionManager, PostgresDatabase}
 import com.ruchij.models.ServiceInformation
-import com.ruchij.web.routes.IndexRoute
+import com.ruchij.web.routes.{IndexRoute, TagRoute}
 import net.liftweb.db.DB
 import net.liftweb.util.DefaultConnectionIdentifier
 
@@ -16,11 +17,14 @@ class Boot
 
       implicit val environmentVariables: Map[String, String] = sys.env
 
-      IndexRoute.init(ServiceInformation())
-
       init().failed.foreach {
         throw _
       }
+
+      IndexRoute.init(ServiceInformation())
+      TagRoute.init()
+      ProductMapper.init()
+      TagMapper.init()
 
     }
       .fold[Unit](

@@ -10,6 +10,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       liftWebkit,
       liftMapper, postgresql,
+      jodaTime,
 
       scalaTest % Test,
       pegdown % Test

@@ -38,7 +38,7 @@ object DatabaseConnectionManager
       dbUsername <- getEnvValue(DB_USERNAME)
       dbPassword <- getEnvValue(DB_PASSWORD)
 
-      connectionManager <- connectionManager(database, dbHostname, dbPort, dbName)(dbUsername, dbPassword)
+      manager <- connectionManager(database, dbHostname, dbPort, dbName)(dbUsername, dbPassword)
     }
-    yield connectionManager
+    yield manager
 }
